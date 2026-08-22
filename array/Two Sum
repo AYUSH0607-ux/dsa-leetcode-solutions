@@ -1,0 +1,14 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        left=0
+        right=len(nums)-1
+        indexing=sorted(enumerate(nums),key=lambda x:x[1])
+        while left<right:
+            sum=indexing[left][1]+indexing[right][1]
+            if sum==target:
+                return indexing[left][0],indexing[right][0]
+            elif sum<target:
+                left+=1
+            else :
+                right-=1        
+        
