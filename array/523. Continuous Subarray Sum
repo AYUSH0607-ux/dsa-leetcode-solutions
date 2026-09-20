@@ -1,0 +1,13 @@
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        sum=0
+        remainder_count={0:-1}
+        for i in range(len(nums)):
+            sum+=nums[i]
+            remainder=sum%k
+            if remainder in remainder_count:
+                if i-remainder_count[remainder]>1:
+                    return True
+            else :
+                remainder_count[remainder]=i    
+        return False            
