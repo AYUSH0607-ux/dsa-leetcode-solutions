@@ -1,0 +1,17 @@
+class Solution(object):
+    def maximumSubarraySum(self, nums, k):
+        window=set()
+        left=0
+        cur_sum=0
+        max_sum=0
+        for right in range(len(nums)):
+            while nums[right]  in window or len(window)==k:
+                window.remove(nums[left])
+                cur_sum-=nums[left]
+                left+=1
+            cur_sum+=nums[right]
+            window.add(nums[right])
+            if len(window)==k:
+                max_sum=max(cur_sum,max_sum)   
+
+        return max_sum
