@@ -1,0 +1,12 @@
+class Solution:
+    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+        window_sum,left,maximum=0,0,0
+        for right in range(len(s)):
+            cost=abs(ord(s[right])-ord(t[right]))
+            window_sum+=cost
+
+            while window_sum>maxCost:
+                window_sum-=abs(ord(s[left])-ord(t[left]))
+                left+=1
+            maximum=max(maximum,right-left+1)
+        return maximum    
