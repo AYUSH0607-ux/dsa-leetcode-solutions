@@ -1,0 +1,25 @@
+from collections import Counter
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        if len(t)>len(s):
+            return ""
+        count=Counter(t)
+
+        missing=len(t)
+        best_start,left=0,0 
+        best_len=float("inf")   
+        for right in range(len(s)):
+            ch=s[right]
+            if count.get(ch,0)>0:
+                missing-=1
+            count[ch]=count.get(ch,0)-1    
+            while missing==0:
+                if right-left+1<best_len:
+                    best_len=right-left+1
+                    best_start=left
+
+                count[s[left]]+=1
+                if count[s[left]]>0:
+                    missing+=1
+                left+=1        
+        return s[best_start:best_start+best_len] if best_len!= float("inf")  else ""       
