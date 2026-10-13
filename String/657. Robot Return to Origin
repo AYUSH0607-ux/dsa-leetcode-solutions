@@ -1,0 +1,13 @@
+from collections import Counter
+class Solution:
+    def judgeCircle(self, moves: str) -> bool:
+        move=Counter(moves)
+        no_up=move.get("U")
+        no_down=move.get("D")
+        no_R=move.get("R")
+        no_L=move.get("L")
+
+        if no_up==no_down and no_R==no_L:
+            return True
+        return False    
+        
