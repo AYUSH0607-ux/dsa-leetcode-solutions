@@ -1,0 +1,11 @@
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        s=list(s)
+        for i in range(len(s)):
+            letter=s[-1]
+            for j in range(len(s)-1,0,-1):
+                s[j]=s[j-1]
+            s[0]=letter
+            if "".join(s) == goal:
+                return True
+        return False            
