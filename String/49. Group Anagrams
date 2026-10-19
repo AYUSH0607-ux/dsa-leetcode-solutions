@@ -1,0 +1,7 @@
+class Solution:
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        dic={}
+        for word in strs:
+            dic.setdefault("".join(sorted(word)),[]).append(word)
+        return list(dic.values())       
+
