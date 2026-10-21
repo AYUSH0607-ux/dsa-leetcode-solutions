@@ -1,0 +1,8 @@
+class Solution:
+    def minStartValue(self, nums: list[int]) -> int:
+        total=0
+        lowest=0
+        for i in range(len(nums)):
+            total+=nums[i]
+            lowest=min(total,lowest)
+        return 1-lowest           
