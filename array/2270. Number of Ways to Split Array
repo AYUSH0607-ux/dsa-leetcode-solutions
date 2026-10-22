@@ -1,0 +1,9 @@
+class Solution:
+    def waysToSplitArray(self, nums: list[int]) -> int:
+        count=0
+        left,total=0,sum(nums)
+        for i in range(len(nums)-1):
+            left+=nums[i]
+            if left>=total-left:
+                count+=1
+        return count
